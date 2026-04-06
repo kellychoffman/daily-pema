@@ -14,7 +14,7 @@ async function loadQuotes() {
     const quotes = await req.loadJSON();
     fm.writeString(cache, JSON.stringify(quotes));
     return quotes;
-  } catch {
+  } catch (e) {
     if (fm.fileExists(cache)) {
       return JSON.parse(fm.readString(cache));
     }
@@ -55,15 +55,19 @@ function createWidget(quote, size) {
   return w;
 }
 
-const quotes = await loadQuotes();
-const quote = quoteOfTheDay(quotes);
-const size = config.widgetFamily || "medium";
-const widget = createWidget(quote, size);
+async function run() {
+  const quotes = await loadQuotes();
+  const quote = quoteOfTheDay(quotes);
+  const size = config.widgetFamily || "medium";
+  const widget = createWidget(quote, size);
 
-if (config.runsInWidget) {
-  Script.setWidget(widget);
-} else {
-  widget.presentMedium();
+  if (config.runsInWidget) {
+    Script.setWidget(widget);
+  } else {
+    await widget.presentMedium();
+  }
+
+  Script.complete();
 }
 
-Script.complete();
+await run();
