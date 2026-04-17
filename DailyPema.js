@@ -151,25 +151,28 @@ function quoteOfTheDay() {
 
 function createWidget(quote, size) {
   var w = new ListWidget();
-  w.backgroundColor = new Color("#1a1a1a");
-  w.setPadding(16, 16, 16, 16);
+  w.backgroundColor = new Color("#f7f6f3");
+  w.setPadding(20, 20, 20, 20);
 
-  var maxLen = size === "small" ? 120 : size === "medium" ? 200 : 500;
+  var maxLen = size === "small" ? 140 : size === "medium" ? 240 : 600;
   var displayQuote = quote;
   if (quote.length > maxLen) {
     displayQuote = quote.substring(0, maxLen - 1).trimEnd() + "\u2026";
   }
 
+  var quoteSize = size === "small" ? 14 : size === "medium" ? 16 : 18;
+  var authorSize = size === "small" ? 11 : size === "medium" ? 13 : 14;
+
   var quoteText = w.addText("\u201C" + displayQuote + "\u201D");
-  quoteText.textColor = new Color("#f5f5f5");
-  quoteText.font = Font.lightSystemFont(size === "small" ? 12 : 14);
-  quoteText.minimumScaleFactor = 0.7;
+  quoteText.textColor = new Color("#2c2c2c");
+  quoteText.font = new Font("AvenirNext-Regular", quoteSize);
+  quoteText.minimumScaleFactor = 0.6;
 
   w.addSpacer();
 
   var author = w.addText("\u2014 Pema Ch\u00F6dr\u00F6n");
-  author.textColor = new Color("#bbbbbb");
-  author.font = Font.italicSystemFont(size === "small" ? 10 : 12);
+  author.textColor = new Color("#888888");
+  author.font = new Font("AvenirNext-MediumItalic", authorSize);
   author.rightAlignText();
 
   return w;
