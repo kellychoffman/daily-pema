@@ -4,6 +4,13 @@ An iOS home screen widget that displays a new Pema Chodron quote each day.
 
 Quotes sourced from this WordPress site: [Daily Pema](https://dailypema.wordpress.com/).
 
+## Preview
+
+This is what my homescreen looks like with the widget. Very zen.
+
+<img width="203" alt="Screenshot 2026-04-17 at 10 19 27 AM" src="https://github.com/user-attachments/assets/56dcf1cb-d622-4ed9-87c9-246006906fdb" />
+<img width="203" alt="IMG_2162" src="https://github.com/user-attachments/assets/0f5fcb63-d159-48f7-b56c-6505e515012f" />
+
 ## Setup
 
 1. Install [Scriptable](https://apps.apple.com/us/app/scriptable/id1405459188) from the App Store (free)
