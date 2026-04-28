@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Daily Pema — iPhone Widget</title>
+  <meta name="description" content="A free iPhone home screen widget that shows a new Pema Chödrön quote every day.">
+  <style>
+    * { box-sizing: border-box; }
+    html, body {
+      margin: 0;
+      padding: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Avenir Next", "Helvetica Neue", sans-serif;
+      background: #f7f6f3;
+      color: #2c2c2c;
+      line-height: 1.6;
+    }
+    .container {
+      max-width: 540px;
+      margin: 0 auto;
+      padding: 48px 24px 64px;
+    }
+    h1 {
+      font-size: 32px;
+      font-weight: 600;
+      margin: 0 0 8px;
+      letter-spacing: -0.01em;
+    }
+    .tagline {
+      color: #888;
+      font-size: 17px;
+      margin: 0 0 40px;
+    }
+    .preview {
+      background: #fff;
+      border-radius: 18px;
+      padding: 28px 24px;
+      margin: 0 0 40px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 8px 24px rgba(0,0,0,0.06);
+    }
+    .preview .quote {
+      font-size: 18px;
+      line-height: 1.5;
+      color: #2c2c2c;
+      margin: 0 0 16px;
+    }
+    .preview .author {
+      text-align: right;
+      color: #888;
+      font-style: italic;
+      font-size: 14px;
+      margin: 0;
+    }
+    .step {
+      margin: 0 0 28px;
+    }
+    .step-num {
+      display: inline-block;
+      width: 28px;
+      height: 28px;
+      line-height: 28px;
+      text-align: center;
+      background: #2c2c2c;
+      color: #fff;
+      border-radius: 50%;
+      font-weight: 600;
+      font-size: 14px;
+      margin-right: 10px;
+      vertical-align: middle;
+    }
+    .step-title {
+      font-weight: 600;
+      font-size: 17px;
+      vertical-align: middle;
+    }
+    .step-body {
+      margin: 10px 0 0 38px;
+      color: #555;
+    }
+    .btn {
+      display: inline-block;
+      padding: 14px 28px;
+      background: #2c2c2c;
+      color: #fff !important;
+      text-decoration: none;
+      border-radius: 10px;
+      font-weight: 600;
+      font-size: 16px;
+      margin: 8px 0;
+      transition: opacity 0.15s;
+    }
+    .btn:hover { opacity: 0.85; }
+    .btn-secondary {
+      background: transparent;
+      color: #2c2c2c !important;
+      border: 1.5px solid #2c2c2c;
+    }
+    a { color: #2c2c2c; }
+    .footer {
+      margin-top: 48px;
+      padding-top: 24px;
+      border-top: 1px solid #e5e3de;
+      color: #888;
+      font-size: 14px;
+      text-align: center;
+    }
+    .footer a { color: #888; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Daily Pema</h1>
+    <p class="tagline">A free iPhone widget. One Pema Chödrön quote every day, right on your home screen.</p>
+
+    <div class="preview">
+      <p class="quote">&ldquo;You are the sky. Everything else &mdash; it&rsquo;s just the weather.&rdquo;</p>
+      <p class="author">— Pema Chödrön</p>
+    </div>
+
+    <div class="step">
+      <span class="step-num">1</span>
+      <span class="step-title">Install Scriptable</span>
+      <div class="step-body">
+        It&rsquo;s a free app from the App Store that runs the widget.
+        <br><br>
+        <a class="btn btn-secondary" href="https://apps.apple.com/us/app/scriptable/id1405459188">Get Scriptable</a>
+      </div>
+    </div>
+
+    <div class="step">
+      <span class="step-num">2</span>
+      <span class="step-title">Add the Daily Pema script</span>
+      <div class="step-body">
+        Tap the button below on your iPhone. Scriptable will open and add the script.
+        <br><br>
+        <a class="btn" href="scriptable:///add?scriptURL=https%3A%2F%2Fraw.githubusercontent.com%2Fkellychoffman%2Fdaily-pema%2Fmain%2FDailyPema.js">
+          Add to Scriptable
+        </a>
+      </div>
+    </div>
+
+    <div class="step">
+      <span class="step-num">3</span>
+      <span class="step-title">Add the widget to your home screen</span>
+      <div class="step-body">
+        Long-press an empty spot on your home screen, tap the <strong>+</strong> in the top corner, search for <em>Scriptable</em>, and add a widget. Then long-press the widget, choose <em>Edit Widget</em>, and set the script to <strong>DailyPema</strong>.
+      </div>
+    </div>
+
+    <div class="footer">
+      Quotes from <a href="https://dailypema.wordpress.com/">dailypema.wordpress.com</a>.<br>
+      Source on <a href="https://github.com/kellychoffman/daily-pema">GitHub</a>.
+    </div>
+  </div>
+</body>
+</html>
