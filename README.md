@@ -2,8 +2,7 @@
 
 An iOS home screen widget that displays a new Pema Chodron quote each day.
 
-Quotes sourced from this WordPress site: [Daily Pema](https://dailypema.wordpress.com/).
-Instructions: https://kellychoffman.github.io/daily-pema/
+Quotes sourced from my WordPress site: [Daily Pema](https://dailypema.wordpress.com/).
 
 ## Preview
 
