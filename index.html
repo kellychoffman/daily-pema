@@ -129,23 +129,51 @@
 
     <div class="step">
       <span class="step-num">2</span>
-      <span class="step-title">Add the Daily Pema script</span>
+      <span class="step-title">Copy the script</span>
       <div class="step-body">
-        Tap the button below on your iPhone. Scriptable will open and add the script.
+        Tap the button below to copy the script code to your clipboard.
         <br><br>
-        <a class="btn" href="scriptable:///add?scriptURL=https%3A%2F%2Fraw.githubusercontent.com%2Fkellychoffman%2Fdaily-pema%2Fmain%2FDailyPema.js">
-          Add to Scriptable
-        </a>
+        <button class="btn" id="copyBtn" type="button">Copy script</button>
+        <span id="copyStatus" style="margin-left:12px; color:#4a8a4a; font-weight:600; display:none;">Copied!</span>
       </div>
     </div>
 
     <div class="step">
       <span class="step-num">3</span>
+      <span class="step-title">Paste it into Scriptable</span>
+      <div class="step-body">
+        Open the Scriptable app, tap the <strong>+</strong> in the top-right to create a new script, paste the code in, then tap <strong>Done</strong>. Long-press the script in your library and tap <strong>Rename</strong> &mdash; name it <strong>DailyPema</strong>.
+      </div>
+    </div>
+
+    <div class="step">
+      <span class="step-num">4</span>
       <span class="step-title">Add the widget to your home screen</span>
       <div class="step-body">
         Long-press an empty spot on your home screen, tap the <strong>+</strong> in the top corner, search for <em>Scriptable</em>, and add a widget. Then long-press the widget, choose <em>Edit Widget</em>, and set the script to <strong>DailyPema</strong>.
       </div>
     </div>
+
+    <script>
+      const SCRIPT_URL = "https://raw.githubusercontent.com/kellychoffman/daily-pema/main/DailyPema.js";
+      const btn = document.getElementById("copyBtn");
+      const status = document.getElementById("copyStatus");
+      btn.addEventListener("click", async () => {
+        try {
+          const res = await fetch(SCRIPT_URL);
+          const text = await res.text();
+          await navigator.clipboard.writeText(text);
+          status.textContent = "Copied!";
+          status.style.display = "inline";
+          setTimeout(() => { status.style.display = "none"; }, 3000);
+        } catch (e) {
+          status.textContent = "Couldn't copy — open the script manually";
+          status.style.color = "#a05050";
+          status.style.display = "inline";
+          window.open(SCRIPT_URL, "_blank");
+        }
+      });
+    </script>
 
     <div class="footer">
       Quotes from <a href="https://dailypema.wordpress.com/">dailypema.wordpress.com</a>.<br>

@@ -13,14 +13,16 @@ This is what my homescreen looks like with the widget. Very zen.
 
 ## Setup
 
-The easiest way to install is through the [setup page](https://kellychoffman.github.io/daily-pema/), which walks you through it on your iPhone.
+The [setup page](https://kellychoffman.github.io/daily-pema/) walks you through it with a one-tap "copy script" button.
 
-If you'd rather do it manually:
+To do it manually:
 
 1. Install [Scriptable](https://apps.apple.com/us/app/scriptable/id1405459188) from the App Store (free)
-2. On your iPhone, open this link to import the script directly into Scriptable: [scriptable:///add?scriptURL=https%3A%2F%2Fraw.githubusercontent.com%2Fkellychoffman%2Fdaily-pema%2Fmain%2FDailyPema.js](scriptable:///add?scriptURL=https%3A%2F%2Fraw.githubusercontent.com%2Fkellychoffman%2Fdaily-pema%2Fmain%2FDailyPema.js)
-3. On your home screen, long-press an empty area, tap **+** in the top corner, search for **Scriptable**, and add a widget
-4. Long-press the widget, tap **Edit Widget**, and set **Script** to **DailyPema**
+2. Copy the contents of [`DailyPema.js`](DailyPema.js)
+3. In Scriptable, tap **+** to create a new script, paste the code, tap **Done**
+4. Long-press the new script and rename it to **DailyPema**
+5. On your home screen, long-press an empty area, tap **+**, search for **Scriptable**, and add a widget
+6. Long-press the widget, tap **Edit Widget**, and set **Script** to **DailyPema**
 
 The widget shows a new quote each day and caches quotes locally for offline use.
 
