@@ -138,7 +138,11 @@
         Tap the button below to copy the script code to your clipboard.
         <br><br>
         <button class="btn" id="copyBtn" type="button">Copy script</button>
-        <span id="copyStatus" style="margin-left:12px; color:#4a8a4a; font-weight:600; display:none;">Copied!</span>
+        <span id="copyStatus" style="margin-left:12px; font-weight:600; display:none;"></span>
+        <div id="manualBox" style="display:none; margin-top:14px;">
+          <p style="font-size:14px; color:#666; margin:0 0 8px;">If the button didn't work, tap inside the box, choose <strong>Select All</strong>, then <strong>Copy</strong>:</p>
+          <textarea id="scriptText" readonly style="width:100%; height:140px; font-family:ui-monospace,Menlo,monospace; font-size:12px; padding:10px; border:1px solid #ddd; border-radius:8px; background:#fff; color:#333;"></textarea>
+        </div>
       </div>
     </div>
 
@@ -162,19 +166,37 @@
       const SCRIPT_URL = "https://raw.githubusercontent.com/kellychoffman/daily-pema/main/DailyPema.js";
       const btn = document.getElementById("copyBtn");
       const status = document.getElementById("copyStatus");
+      const manualBox = document.getElementById("manualBox");
+      const scriptText = document.getElementById("scriptText");
+
+      // Pre-fetch the script on page load so the copy click can run synchronously.
+      const scriptTextPromise = fetch(SCRIPT_URL).then(r => r.text());
+      scriptTextPromise.then(text => { scriptText.value = text; });
+
+      function showStatus(msg, ok) {
+        status.textContent = msg;
+        status.style.color = ok ? "#4a8a4a" : "#a05050";
+        status.style.display = "inline";
+        if (ok) setTimeout(() => { status.style.display = "none"; }, 3000);
+      }
+
       btn.addEventListener("click", async () => {
         try {
-          const res = await fetch(SCRIPT_URL);
-          const text = await res.text();
-          await navigator.clipboard.writeText(text);
-          status.textContent = "Copied!";
-          status.style.display = "inline";
-          setTimeout(() => { status.style.display = "none"; }, 3000);
+          // iOS Safari needs the clipboard write to happen synchronously after the tap.
+          // ClipboardItem accepts a Promise<Blob>, which keeps the user-activation alive.
+          if (typeof ClipboardItem !== "undefined" && navigator.clipboard && navigator.clipboard.write) {
+            const blobPromise = scriptTextPromise.then(t => new Blob([t], { type: "text/plain" }));
+            await navigator.clipboard.write([new ClipboardItem({ "text/plain": blobPromise })]);
+          } else {
+            const text = await scriptTextPromise;
+            await navigator.clipboard.writeText(text);
+          }
+          showStatus("Copied!", true);
         } catch (e) {
-          status.textContent = "Couldn't copy — open the script manually";
-          status.style.color = "#a05050";
-          status.style.display = "inline";
-          window.open(SCRIPT_URL, "_blank");
+          showStatus("Couldn't auto-copy — use the box below", false);
+          manualBox.style.display = "block";
+          scriptText.focus();
+          scriptText.select();
         }
       });
     </script>
