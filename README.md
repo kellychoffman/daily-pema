@@ -21,8 +21,9 @@ To do it manually:
 2. Copy the contents of [`DailyPema.js`](DailyPema.js)
 3. In Scriptable, tap **+** to create a new script and paste the code in
 4. Tap the script's title at the top of the editor and rename it to **DailyPema**, then tap **Done**
-5. On your home screen, long-press an empty area, tap **+**, search for **Scriptable**, pick a widget size, and tap **Add Widget**
-6. Long-press the new widget, tap **Edit Widget**, and set **Script** to **DailyPema**
+5. On your home screen, long-press an empty area, tap **Edit** in the top-left, then tap **Add Widget**
+6. Search for **Scriptable**, pick a widget size, and tap **Add Widget**
+7. Long-press the new widget, tap **Edit Widget**, and set **Script** to **DailyPema**
 
 The widget shows a new quote each day and caches quotes locally for offline use.
 
